@@ -21,15 +21,21 @@ class CountriesListView extends StatelessWidget {
     }
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-          itemCount: countriesList.length,
-          itemBuilder: ((context, index) {
-            Country country = countriesList[index];
-            // implementar country tile
-            return CountryTile(
-                name: country.name.toString(),
-                capital: country.capital.toString());
-          })),
+      child: ListView.separated(
+        itemCount: countriesList.length,
+        itemBuilder: ((context, index) {
+          Country country = countriesList[index];
+          // implementar country tile
+          return CountryTile(
+              name: country.name.toString(),
+              capital: country.capital.toString());
+        }),
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            height: 10,
+          );
+        },
+      ),
     );
   }
 }
